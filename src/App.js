@@ -1,9 +1,7 @@
 import React from 'react';
-import Button from '@material-ui/core/Button';
-import FormDialog from './FormDialog';
 
 import './App.css';
-
+import MyForm from './MyForm';
 
 function App() {
   return (
@@ -11,7 +9,7 @@ function App() {
         <header className="App-header">
           <h1>Wellcome!</h1>
         </header>
-        <FormDialog></FormDialog>
+        <MyForm/>
       </div>
   );
 }

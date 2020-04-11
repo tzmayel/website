@@ -29,7 +29,7 @@ const MyForm = (props) => {
         setBackendErrors('');
 
         console.log('validateForm()', validateForm());
-        if(!validateForm()) {
+        if (!validateForm()) {
             setBackendErrors('Please fill the form correctly');
             return;
         }
@@ -52,10 +52,10 @@ const MyForm = (props) => {
         let isErrors = false;
         const newObj = {};
 
-        for(const fieldName in errors){
+        for (const fieldName in errors) {
             const errorMsg = errorField(fieldName, state[fieldName]);
             console.log('errorMsg=', errorMsg);
-            if(!isErrors){
+            if (!isErrors) {
                 isErrors = errorMsg !== '';
             }
             newObj[fieldName] = errorMsg;
@@ -65,30 +65,30 @@ const MyForm = (props) => {
         return !isErrors;
     }
 
-    const errorField = ( name, value) => {
-        console.log('vliza v errorField. name=', name,', value=', value);
+    const errorField = (name, value) => {
+        console.log('vliza v errorField. name=', name, ', value=', value);
         switch (name) {
             case 'fullName':
                 if (value.length < 2) {
                     return 'Minimum 2 charecters';
                 }
                 else if (value.length > 100) {
-                    return  'Too long!';
+                    return 'Too long!';
                 }
 
                 break;
             case 'email':
                 if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(value)) {
-                    return  'Invalid email address';
+                    return 'Invalid email address';
                 }
                 else if (value.length > 100) {
-                    return  'Too long!';
+                    return 'Too long!';
                 }
 
                 break;
             case 'message':
                 if (value.length > 600) {
-                    return  'Too long!';
+                    return 'Too long!';
                 }
 
                 break;
@@ -109,7 +109,7 @@ const MyForm = (props) => {
         setErrors(oldState => {
             return {
                 ...oldState,
-                [name]: errMsg 
+                [name]: errMsg
             };
         });
 
@@ -128,55 +128,68 @@ const MyForm = (props) => {
     const thankYouMessage = <h1>Thank you for subscribing!</h1>;
 
     const subscribeForm = (
-        <form onSubmit={handleSubmit}>
-            <GoogleReCaptcha onVerify={token => setToken(token)} />
-            <Grid container spacing={3}>
-                <Grid item xs={12}>
-                    <TextField
-                        label="E-mail address"
-                        variant="outlined"
-                        error={errors.email !== ""}
-                        name="email"
-                        onChange={handleChange}
-                        value={state.email}
-                        style={{ width: '100%' }}
-                        helperText={errors.email || ' '}
-                    />
-                </Grid>
-                <Grid item xs={12}>
-                    <TextField
-                        label="Your names"
-                        variant="outlined"
-                        error={errors.fullName !== ""}
-                        name="fullName"
-                        onChange={handleChange}
-                        value={state.fullName}
-                        style={{ width: '100%' }}
-                        helperText={errors.fullName || ' '}
-                    />
-                </Grid>
-                <Grid item xs={12}>
-                    <TextField
-                        label="Message (optional)"
-                        variant="outlined"
-                        error={errors.message !== ""}
-                        name="message"
-                        onChange={handleChange}
-                        value={state.message}
-                        style={{ width: '100%' }}
-                        helperText={errors.message || ' '}
-                        multiline
-                        rows={6}
-                    />
-                </Grid>
-                <Grid item xs={12}>
-                    <span style={{ fontSize: '18px', color: 'red' }}> {backendErrors} </span>
-                </Grid>
-                <Grid item xs={12}>
-                    <Button variant="contained" color="primary" onClick={handleSubmit}>Subscribe</Button>
-                </Grid>
+        <Grid
+            container
+            direction="column"
+            justify="center"
+            alignItems="center"
+            spacing={4}
+            style={{ padding: '20px' }}
+        >
+            <Grid item xs={12}>
+
+
+                <form onSubmit={handleSubmit}>
+                    <GoogleReCaptcha onVerify={token => setToken(token)} />
+                    <Grid container spacing={3}>
+                        <Grid item xs={12}>
+                            <TextField
+                                label="E-mail address"
+                                variant="outlined"
+                                error={errors.email !== ""}
+                                name="email"
+                                onChange={handleChange}
+                                value={state.email}
+                                style={{ width: '100%' }}
+                                helperText={errors.email || ' '}
+                            />
+                        </Grid>
+                        <Grid item xs={12}>
+                            <TextField
+                                label="Your names"
+                                variant="outlined"
+                                error={errors.fullName !== ""}
+                                name="fullName"
+                                onChange={handleChange}
+                                value={state.fullName}
+                                style={{ width: '100%' }}
+                                helperText={errors.fullName || ' '}
+                            />
+                        </Grid>
+                        <Grid item xs={12}>
+                            <TextField
+                                label="Message (optional)"
+                                variant="outlined"
+                                error={errors.message !== ""}
+                                name="message"
+                                onChange={handleChange}
+                                value={state.message}
+                                style={{ width: '100%' }}
+                                helperText={errors.message || ' '}
+                                multiline
+                                rows={6}
+                            />
+                        </Grid>
+                        <Grid item xs={12}>
+                            <span style={{ fontSize: '18px', color: 'red' }}> {backendErrors} </span>
+                        </Grid>
+                        <Grid item xs={12}>
+                            <Button variant="contained" color="primary" onClick={handleSubmit}>Subscribe</Button>
+                        </Grid>
+                    </Grid>
+                </form>
             </Grid>
-        </form>
+        </Grid>
     )
 
     return (
