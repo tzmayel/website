@@ -1,7 +1,7 @@
 import React from 'react';
 
 import './App.css';
-import MyForm from './MyForm';
+import SubscribeForm from './SubscribeForm';
 
 function App() {
   return (
@@ -9,7 +9,7 @@ function App() {
       <header className="App-header">
         <h1>Welcome!</h1>
       </header>
-      <MyForm />
+      <SubscribeForm />
     </div>
   );
 }

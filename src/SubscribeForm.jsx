@@ -3,7 +3,7 @@ import axios from 'axios';
 import { Grid, TextField, Button } from '@material-ui/core';
 import { GoogleReCaptcha } from 'react-google-recaptcha-v3';
 
-const MyForm = () => {
+const SubscribeForm = () => {
   const [state, setState] = useState({
     fullName: '',
     email: '',
@@ -121,7 +121,7 @@ const MyForm = () => {
 
   const thankYouMessage = <h1>Thank you for subscribing!</h1>;
 
-  const subscribeForm = (
+  const form = (
     <Grid
       container
       direction="column"
@@ -192,7 +192,7 @@ const MyForm = () => {
     </Grid>
   );
 
-  return <>{submitSuccess ? thankYouMessage : subscribeForm}</>;
+  return <>{submitSuccess ? thankYouMessage : form}</>;
 };
 
-export default MyForm;
+export default SubscribeForm;
