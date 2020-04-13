@@ -24,7 +24,7 @@ const MyForm = () => {
     switch (name) {
       case 'fullName':
         if (value.length < 2) {
-          return 'Minimum 2 casd jakshdak shdajk daracters';
+          return 'Minimum 2 characters';
         }
         if (value.length > 100) {
           return 'Too long!';
@@ -110,7 +110,7 @@ const MyForm = () => {
         message: state.message,
         token,
       })
-      .then((res) => {
+      .then(() => {
         // console.log(res);
         setSubmitSuccress(true);
       })
